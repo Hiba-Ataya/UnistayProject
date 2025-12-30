@@ -5,7 +5,7 @@ import { useRole } from "../context/RoleContext";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../styles/SignupForm.css"; // <-- External CSS file
+import "../styles/SignupForm.css"; 
 
 
 function SignupForm() {

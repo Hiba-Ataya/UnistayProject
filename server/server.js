@@ -15,7 +15,7 @@ app.use(express.json());
 // ================= MULTER =================
 const storage = multer.diskStorage({
  destination: (req, file, cb) => {
-  cb(null, process.env.UPLOAD_PATH || 'uploads/dorms/');
+  cb(null,  'uploads/dorms/');
 },
   filename: (req, file, cb) => {
     cb(null, file.originalname + "_" + Date.now() + path.extname(file.originalname));
@@ -26,19 +26,6 @@ const upload = multer({ storage: storage });
 // Serve static files from uploads
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
-// ================= MYSQL =================
-const db = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
-  port: process.env.DB_PORT,
-});
-
-db.connect((err) => {
-  if (err) console.log("DB Error:", err);
-  else console.log("MySQL Connected");
-});
 
 
 // ================= AUTH ===========================
@@ -47,7 +34,7 @@ db.connect((err) => {
 app.post("/signup", (req, res) => {
   const { username, password, address, phone, role } = req.body;
 
-  // 1️⃣ Check if username already exists
+  // Check if username already exists
   const checkQuery = "SELECT id FROM users WHERE username = ?";
   db.query(checkQuery, [username], (err, data) => {
     if (err) return res.status(500).json(err);
@@ -59,7 +46,7 @@ app.post("/signup", (req, res) => {
       });
     }
 
-    // 2️⃣ Insert new user if username is unique
+    // 2Insert new user if username is unique
     const insertQuery =
       "INSERT INTO users (username, password, address, phone, role) VALUES (?,?,?,?,?)";
 

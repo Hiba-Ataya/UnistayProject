@@ -14,7 +14,7 @@ export const StudentDashboard = () => {
   useEffect(() => {
     const fetchDorms = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/dorms");
+        const res = await axios.get("/dorms");
         setDorms(res.data);
       } catch (err) {
         console.error(err);

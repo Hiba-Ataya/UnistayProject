@@ -30,7 +30,7 @@ export const SearchResults = () => {
       setLoading(true);
       try {
         const res = await axios.get(
-          `http://localhost:5000/dorms/search?q=${encodeURIComponent(query)}`
+          `/dorms/search?q=${encodeURIComponent(query)}`
         );
         setResults(res.data);
       } catch (err) {
