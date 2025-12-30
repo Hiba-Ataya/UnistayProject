@@ -20,7 +20,7 @@
     "web-vitals": "^2.1.4"
   },
 
-  "proxy":"http://localhost:5000",
+  "proxy":"https://unistayproject.onrender.com",
 
   "scripts": {
     "start": "react-scripts start",
