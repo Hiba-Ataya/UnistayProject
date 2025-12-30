@@ -5,7 +5,7 @@ const cors = require("cors");
 const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
-
+const db=require("./config/database");
 const app = express();
 const port = process.env.PORT || 5000;
 
