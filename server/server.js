@@ -5,7 +5,7 @@ const cors = require("cors");
 const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
-
+const db=require("./config/database");
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -27,6 +27,33 @@ const upload = multer({ storage: storage });
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 
+app.get("/", (req, res) => {
+  res.json({
+    message: "UniStay API is running 🚀",
+    version: "1.0.0",
+    endpoints: {
+      auth: {
+        signup: "POST /signup",
+        login: "POST /login"
+      },
+      dorms: {
+        getAll: "GET /dorms",
+        getOne: "GET /dorm/:id",
+        add: "POST /addDorm",
+        delete: "DELETE /dorms/:id",
+        byOwner: "GET /dorms/owner/:owner_id",
+        search: "GET /dorms/search?q="
+      },
+      favorites: {
+        add: "POST /addFavorite",
+        getByUser: "GET /favorites/:userId"
+      },
+      users: {
+        update: "PUT /users/:id"
+      }
+    }
+  });
+});
 
 // ================= AUTH ===========================
 
