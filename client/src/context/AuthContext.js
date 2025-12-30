@@ -29,7 +29,7 @@ export const AuthProvider = ({ children }) => {
   // ==========================
   const login = async (username, password, role) => {
     try {
-      const res = await axios.post("/login", {
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/login`, {
         username,
         password,
         role,
@@ -58,7 +58,7 @@ export const AuthProvider = ({ children }) => {
   // ==========================
   const signup = async (username, password, role, address, phone) => {
     try {
-      const res = await axios.post("/signup", {
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/signup`, {
         username,
         password,
         role,

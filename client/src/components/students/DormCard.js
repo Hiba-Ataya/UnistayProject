@@ -11,7 +11,7 @@ export const DormCard = ({ dorm }) => {
   const handleNavigate = () => {
     if (!dorm) return;
     setSelectedDorm(dorm);
-    navigate(`/dorm-details/${dorm.id}`); // Correct template literal
+    navigate(`${process.env.REACT_APP_API_URL}/dorm-details/${dorm.id}`); // Correct template literal
   };
 
   return (

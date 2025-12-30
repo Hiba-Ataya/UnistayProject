@@ -19,7 +19,7 @@ const OwnerDashboard = () => {
     const fetchDorms = async () => {
       try {
         const res = await axios.get(
-          `/owner/${user.id}`
+          `${process.env.REACT_APP_API_URL}/owner/${user.id}`
         );
         setDorms(res.data);
       } catch (err) {
