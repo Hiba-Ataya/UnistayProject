@@ -26,7 +26,10 @@ const upload = multer({ storage: storage });
 // Serve static files from uploads
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> a2e3011f18f750d67ee3742f16b1312238665873
 app.get("/", (req, res) => {
   res.json({
     message: "UniStay API is running 🚀",
